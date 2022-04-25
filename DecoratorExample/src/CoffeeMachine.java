@@ -1,3 +1,4 @@
+import decorators.Cappuccino;
 import decorators.DoubleCoffee;
 import decorators.WithMilk;
 import model.Americano;
@@ -30,6 +31,7 @@ public class CoffeeMachine {
 		order("Americano", new Americano());
 		order("Americano com leite", new WithMilk(new Americano()));
 		order("Duplo Americano com leite", new DoubleCoffee(new WithMilk(new Americano())) );
+		order("Capputino", new Cappuccino(new WithMilk(new Expresso())));
 		
 		
 		
