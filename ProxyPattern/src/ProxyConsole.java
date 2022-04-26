@@ -45,7 +45,14 @@ public class ProxyConsole {
 	   AuxilioBrasil auxilioi3 = new UserAuxilioProxy((UserSaqueBrasil) user3);
 	   System.out.println("CPF do beneficiado que solicitou: " + ((UserSaqueBrasil) user3).getCpf());
 	   auxilioi3.saque(cod3);
+	 	   
+	   //----------------------------------------------------------------
+	   UserSaqueBrasil user5 = new UserSaqueBrasil("70558944402");
+	   int code = user5.generateCode();
 	   
+	   AuxilioBrasil beneficioEmergencial = new UserAuxilioProxy(user5);
+	   System.out.println("CPF do solicitante: " + user5.getCpf());
+	   beneficioEmergencial.saque(code);  
 	   
 	   
 		

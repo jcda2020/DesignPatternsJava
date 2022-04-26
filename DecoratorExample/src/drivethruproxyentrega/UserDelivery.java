@@ -3,8 +3,9 @@ package drivethruproxyentrega;
 import java.util.Random;
 
 import model.Coffee;
+import model.Pedidos;
 
-public class UserDelivery implements EntregaPedido{
+public class UserDelivery implements EntregaPedido, Pedidos{
 
 	private String cpf;
 	private Integer codigo;
@@ -68,10 +69,9 @@ public UserDelivery (String cpf) {
 		
 	}
 	
+	
 	public void order(String nome, Coffee coffee) throws InterruptedException {
-		System.out.println("Preparando seu café: " + nome);	
-		
-		coffee.make();
+		System.out.println("Preparando seu café: " + nome);			
 		
 				for (int i = 5; i > 0; i--) {
 			
@@ -79,6 +79,8 @@ public UserDelivery (String cpf) {
 					System.out.print( ". ");
 			
 					}
+				
+				coffee.make();
 		
 		System.out.println("Tudo pronto! Estamos lhe aguardando");
 		System.out.println("Preço: " + coffee.getPrice());

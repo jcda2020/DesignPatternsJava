@@ -6,5 +6,5 @@ public interface Coffee {
 	// retorna o preço
 	Double getPrice();
 	
-	public default void addMilk() {}
+	
 }

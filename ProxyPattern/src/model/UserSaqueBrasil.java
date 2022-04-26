@@ -64,7 +64,7 @@ public class UserSaqueBrasil  implements AuxilioBrasil{
 		}
 		
 		setCodigo(cod);
-		
+		System.out.println("Código gerado com sucesso!");
 		return cod;		
 		
 	}

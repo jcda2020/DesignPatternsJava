@@ -1,7 +1,7 @@
 package decorators;
 
 import model.Coffee;
-import model.Americano;
+
 
 
 public class WithMilk extends CoffeeDecorator{
@@ -25,9 +25,6 @@ public class WithMilk extends CoffeeDecorator{
 		return coffee.getPrice() + 1.25;
 	}
 
-	@Override	
-	public void addMilk() {
-		
-	}
+	
 	
 }
