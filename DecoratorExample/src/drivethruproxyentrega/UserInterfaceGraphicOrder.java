@@ -73,12 +73,7 @@ public class UserInterfaceGraphicOrder  {
 	} else  if (minhaRetirada.equalsIgnoreCase("não")){
 		
 		System.out.println("Tudo bem, quando decidi é só nos avisar!");
-	}
-		 
-		
-		 
-		 
-		
+	}	
 		
 		
 	}

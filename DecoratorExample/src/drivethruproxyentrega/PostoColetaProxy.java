@@ -8,12 +8,6 @@ public class PostoColetaProxy implements EntregaPedido{
 		this.user = user;
 	}
 
-	
-	
-	
-	
-
-
 	@Override
 	public void retiraPedido(int codigo) {
 		// TODO Auto-generated method stub
@@ -40,7 +34,7 @@ public class PostoColetaProxy implements EntregaPedido{
 		
 		}else {
 			
-			System.out.println("Código errado! ):");
+			System.out.println("Código digitado está errado! ):");
 		}
 		
 		

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import decorators.Cappuccino;
 //import decorators.Cappuccino;
 import decorators.DoubleCoffee;
 import decorators.WithMilk;
@@ -10,7 +11,8 @@ import model.Expresso;
 import model.Pedidos;
 
 public class CoffeeMachine implements Pedidos{
-
+	
+	@Override
 	public  void order(String nome, Coffee coffee) {
 		
 		coffee.make();
@@ -18,7 +20,7 @@ public class CoffeeMachine implements Pedidos{
 		
 	}
 	
-	
+	@Override
 	public void showOrder(String title, Coffee coffee) {
 		System.out.println("Preparando seu café: " + title);
 		System.out.println("Preço: " + coffee.getPrice());
@@ -61,7 +63,9 @@ public class CoffeeMachine implements Pedidos{
 				}
 				
 				
-				System.out.println("Digite uma das opções para adicionar: \n 1 - sem adição \n 2 - duplo  \n 3 - café com leite \n 4 - duplo e com leite");
+System.out.println("Digite uma das opções para adicionar:"
+		+ " \n 1 - sem adição \n 2 - duplo  \n 3 - café com leite"
+		+ " \n 4 - duplo e com leite \n 5 - para cappuccino");
 						byte decorator = leiaOpcao.nextByte();
 						if (decorator == 1) {							
 							System.out.println("Ah entendi sem adição. Tudo bem! ");
@@ -76,7 +80,7 @@ public class CoffeeMachine implements Pedidos{
 							
 						}
 						if (decorator == 2) {							
-							System.out.println("Ah entendi um duplo. Beleza! ");
+							System.out.println("Ah entendi, um duplo. Beleza! ");
 							if(coffee instanceof Expresso) {
 								
 								drinkCoffee.order("Expresso duplo",  new DoubleCoffee(coffee));
@@ -91,14 +95,14 @@ public class CoffeeMachine implements Pedidos{
 				
 						if (decorator == 3) {							
 							System.out.println("Tranquilo, um letizinho para adoçar a vida! Vamos preparar. ");
+							System.out.println("Mexe mexe mexe ...");
 							if(coffee instanceof Expresso) {
 								
 								drinkCoffee.order("Expresso com leite",  new WithMilk(coffee));
 							} else if(coffee instanceof Americano) {
 								
 								drinkCoffee.order("Americano com leite",  new WithMilk(coffee));
-							}
-							
+							}				
 							
 							
 						}
@@ -112,6 +116,18 @@ public class CoffeeMachine implements Pedidos{
 							} else if(coffee instanceof Americano) {
 								
 								drinkCoffee.order("Americano duplo leite",  new DoubleCoffee(new WithMilk(coffee)));
+							}		
+							
+							
+						}
+						if (decorator == 5) {							
+							System.out.println("Que legal! Cappuccino no palco! Eh! eh!");
+							if(coffee instanceof Expresso) {
+								
+								drinkCoffee.order("Cappuccino",  new Cappuccino( coffee));
+							} else if(coffee instanceof Americano) {
+								
+								drinkCoffee.order("Cappuccino americano", new Cappuccino( coffee));
 							}
 							
 							

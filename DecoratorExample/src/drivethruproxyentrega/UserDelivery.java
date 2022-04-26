@@ -69,7 +69,7 @@ public UserDelivery (String cpf) {
 		
 	}
 	
-	
+	@Override
 	public void order(String nome, Coffee coffee) throws InterruptedException {
 		System.out.println("Preparando seu café: " + nome);			
 		
@@ -81,14 +81,17 @@ public UserDelivery (String cpf) {
 					}
 				
 				coffee.make();
+				showOrder( nome, coffee);
 		
-		System.out.println("Tudo pronto! Estamos lhe aguardando");
-		System.out.println("Preço: " + coffee.getPrice());
-	
-
-	System.out.println(" c(__)  --- CoffeeShop  --- c(__)   \n");
-	System.out.println(" ");
 	}
 	
+	@Override
+	public void showOrder(String title, Coffee coffee) {
+		
+		System.out.println("Preço: " + coffee.getPrice());
+		
+		System.out.println("\u2615 \u2615 \u2615 --- CoffeeShop  --- \u2615 \u2615 \u2615  \n");
+		System.out.println(" ");
+	}
 	
 }
