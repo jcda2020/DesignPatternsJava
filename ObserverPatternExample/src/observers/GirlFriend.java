@@ -14,14 +14,14 @@ public class GirlFriend  implements Observer{
 		}
 		else {
 			
-			System.out.println("He did not arrive");
+			System.out.println("Ele ainda não chegou!");
 		}
 		
 	}
 
 	private void partyTime() {
 		// TODO Auto-generated method stub
-		System.out.println("Let's start the party!");
+		System.out.println("Vamos começar a festa!");
 	}
 
 }

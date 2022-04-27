@@ -4,8 +4,9 @@ import java.util.Random;
 
 import model.Coffee;
 import model.Pedidos;
+import observerdelivery.ObserverPreparoPedido;
 
-public class UserDelivery implements EntregaPedido, Pedidos{
+public class UserDelivery implements EntregaPedido, Pedidos, ObserverPreparoPedido{
 
 	private String cpf;
 	private Integer codigo;
@@ -75,11 +76,11 @@ public UserDelivery (String cpf) {
 		
 				for (int i = 5; i > 0; i--) {
 			
-					Thread.sleep(2000);
+					Thread.sleep(4000);
 					System.out.print( ". ");
 			
 					}
-				
+							
 				coffee.make();
 				showOrder( nome, coffee);
 		
@@ -92,6 +93,15 @@ public UserDelivery (String cpf) {
 		
 		System.out.println("\u2615 \u2615 \u2615 --- CoffeeShop  --- \u2615 \u2615 \u2615  \n");
 		System.out.println(" ");
+	}
+
+
+	@Override
+	public void update(boolean status) {
+		// TODO Auto-generated method stub
+		if(status) {			
+			generateCode();
+		}
 	}
 	
 }

@@ -1,8 +1,24 @@
 package drivethruproxyentrega;
 
-public class PostoColetaProxy implements EntregaPedido{
+import observerdelivery.SubjectPedidos;
+
+public class PostoColetaProxy  extends SubjectPedidos  implements EntregaPedido{
 
 	private UserDelivery user;
+	
+	private boolean status = false;
+
+	public boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+		
+		notifyObservers(status);
+		
+	}
+	
 		
 	public PostoColetaProxy(UserDelivery user) {	
 		this.user = user;
