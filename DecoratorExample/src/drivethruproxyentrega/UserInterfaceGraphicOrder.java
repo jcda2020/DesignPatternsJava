@@ -21,7 +21,7 @@ public class UserInterfaceGraphicOrder  {
 		
 		String minhaRetirada ;
 		int code = 0;	
-		 double price = 0;
+		double price = 0;
 		
 		@SuppressWarnings("resource")
 		Scanner leiaOpcao = new Scanner(System.in);
@@ -174,6 +174,7 @@ System.out.println("Digite uma das opções para adicionar:"
 							
 						}
 						
+						// capturar o valor do pedido a fim de saber se o pedido foi montado
 						 price = coffee.getPrice() ;
 					
 				}// fim do if da opção de pedido
@@ -191,8 +192,8 @@ System.out.println("Digite uma das opções para adicionar:"
 				
 					//System.out.println("Gerando um código para fazer a retirada do seu pedido");
 					 
-					  PostoColetaProxy pedido1 = new PostoColetaProxy(user1);	
-					  pedido1.add(user1);
+					  PostoColetaProxy entrega1 = new PostoColetaProxy(user1);	
+					  entrega1.add(user1);
 					  boolean done = false;
 					  
 					if (price != 0) {
@@ -203,10 +204,10 @@ System.out.println("Digite uma das opções para adicionar:"
 					  
 					  if(done) {
 					  
-					  pedido1.setStatus(done);
+					  entrega1.setStatus(done);
 					  
 					  code = user1.getCodigo();
-					  pedido1.retiraPedido(code);
+					  entrega1.retiraPedido(code);
 						 
 					  }
 					  
@@ -245,7 +246,7 @@ System.out.println("Digite uma das opções para adicionar:"
 		
 		
 		System.out.println("---------------------------------Próximo pedido--------------------------------------------");
-		
+		// código abaixo sem uso do Observer
 		
 		
 		UserDelivery user2 = new UserDelivery("35223106083");
