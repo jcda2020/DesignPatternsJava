@@ -18,7 +18,9 @@ public class Cappuccino  extends CoffeeDecorator{
 	@Override
 	public Double getPrice() {
 		// TODO Auto-generated method stub
-		return  coffee.getPrice() + 1.25 + 1.5 + 3.5;
+		double price = coffee.getPrice() + 1.25 + 1.5 + 3.5;
+		
+		return  price;
 	}
 
 	

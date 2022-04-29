@@ -6,6 +6,9 @@ import java.util.Scanner;
 import decorators.Cappuccino;
 import decorators.DoubleCoffee;
 import decorators.WithMilk;
+import delivery.concrete.strategy.NineNineFood;
+import delivery.context.DeliveryCompany;
+import deliveryservicestrategy.ShippingPriceServiceStrategy;
 import model.Americano;
 import model.Coffee;
 import model.Expresso;
@@ -22,6 +25,8 @@ public class UserInterfaceGraphicOrder  {
 		String minhaRetirada ;
 		int code = 0;	
 		double price = 0;
+		double priceDelivery = 0;
+		double totalPrice = 0;
 		
 		@SuppressWarnings("resource")
 		Scanner leiaOpcao = new Scanner(System.in);
@@ -56,13 +61,18 @@ public class UserInterfaceGraphicOrder  {
 System.out.println("Digite uma das opções para adicionar:"
 		+ " \n 1 - sem adição \n 2 - duplo  \n 3 - café com leite"
 		+ " \n 4 - duplo e com leite \n 5 - para cappuccino");
+						
+
+            	 
+
 						byte decorator = leiaOpcao.nextByte();
 						if (decorator == 1) {							
 							System.out.println("Ah entendi sem adição. Tudo bem! ");
-							
+							Expresso expresso = new  Expresso();
 							if(coffee instanceof Expresso) {
 								try {
-									user1.order("Expresso", new  Expresso());
+									user1.order("Expresso", expresso);
+									price = expresso.getPrice();
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
@@ -70,7 +80,11 @@ System.out.println("Digite uma das opções para adicionar:"
 							
 							} else if(coffee instanceof Americano) {
 								try {
-									user1.order("Americano", new  Americano());
+									Americano americano = new  Americano();
+									
+									user1.order("Americano", americano);
+									
+									price = americano.getPrice();
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
@@ -82,17 +96,19 @@ System.out.println("Digite uma das opções para adicionar:"
 						if (decorator == 2) {							
 							System.out.println("Ah entendi, um duplo. Beleza! ");
 							if(coffee instanceof Expresso) {
-								
+								DoubleCoffee doubleCoffee = new DoubleCoffee(coffee);
 								try {
-									user1.order("Expresso duplo",  new DoubleCoffee(coffee));
+									user1.order("Expresso duplo",  doubleCoffee);
+									price = doubleCoffee.getPrice();
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
 								}
 							} else if(coffee instanceof Americano) {
-								
+								DoubleCoffee doubleCoffee = new DoubleCoffee(coffee);
 								try {
-									user1.order("Americano duplo",  new DoubleCoffee(coffee));
+									user1.order("Americano duplo",  doubleCoffee);
+									price = doubleCoffee.getPrice();
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
@@ -156,6 +172,7 @@ System.out.println("Digite uma das opções para adicionar:"
 								
 								try {
 									user1.order("Cappuccino",  new Cappuccino( coffee));
+									
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
@@ -164,6 +181,7 @@ System.out.println("Digite uma das opções para adicionar:"
 								
 								try {
 									user1.order("Cappuccino americano", new Cappuccino( coffee));
+									
 								} catch (InterruptedException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
@@ -174,53 +192,49 @@ System.out.println("Digite uma das opções para adicionar:"
 							
 						}
 						
-						// capturar o valor do pedido a fim de saber se o pedido foi montado
-						 price = coffee.getPrice() ;
+						
+						
 					
 				}// fim do if da opção de pedido
 				
 				
 				//Antes de apresentar as opções de menu novamente
 				
-				
-				System.out.println("Vai retirar agora? sim ou não?");				
-				
-				minhaRetirada = leia.next();				
-					
-					
-				if(minhaRetirada.equalsIgnoreCase("sim")){
-				
-					//System.out.println("Gerando um código para fazer a retirada do seu pedido");
-					 
-					  PostoColetaProxy entrega1 = new PostoColetaProxy(user1);	
-					  entrega1.add(user1);
-					  boolean done = false;
-					  
-					if (price != 0) {
+				PostoColetaProxy entrega1 = new PostoColetaProxy(user1);	
+				  entrega1.add(user1);
+				  boolean done = false;
+				  
+				  
+				  if (price != 0) {
 						
 						done = true;
 						
 					}
 					  
 					  if(done) {
-					  
+					  // onde começa o start notificação
 					  entrega1.setStatus(done);
+					  DeliveryCompany company = new DeliveryCompany(new NineNineFood());				  	
 					  
-					  code = user1.getCodigo();
-					  entrega1.retiraPedido(code);
+						priceDelivery = company.priceDeliveryCompany();
 						 
-					  }
+						System.out.println("Preço da taxa de entrega: " + priceDelivery);
+						
+					       totalPrice = price + priceDelivery;
+					
+						System.out.println("Preço total do pedido com frete: " + totalPrice);
+					  		
+						
+						 code = user1.getCodigo();
+						  entrega1.retiraPedido(code);		  				  
+					
+					  } // end if (done)
 					  
 					  else {
 						  
 						  System.out.println("Seu pedido ainda não está pronto! Aguarda mais um pouco");
 					  }
-						
-			} else  if (minhaRetirada.equalsIgnoreCase("não")){
-				
-				System.out.println("Tudo bem, quando decidi é só nos avisar!");
-			}
-				
+				  			
 				
 			
 			
@@ -235,7 +249,7 @@ System.out.println("Digite uma das opções para adicionar:"
 		}
 		
 		
-		/* código anteriro: 
+		/* código anterior: 
 		 * try {
 			user1.order("Expresso", new  Expresso());
 		} catch (InterruptedException e) {
