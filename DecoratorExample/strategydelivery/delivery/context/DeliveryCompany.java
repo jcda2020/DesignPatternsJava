@@ -19,13 +19,10 @@ public class DeliveryCompany {
 		
 	public double priceDeliveryCompany() {
 		
-		double price = 0;
-		
-		if(serviceStrategy instanceof NineNineFood ) {
+		double price = 0;		
 			
-			serviceStrategy = new NineNineFood();
-			price = serviceStrategy.priceDelivery();
-		}	
+		price = serviceStrategy.priceDelivery();
+		
 		
 		
 		return price;

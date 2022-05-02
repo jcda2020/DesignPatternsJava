@@ -16,7 +16,7 @@ public class WithMilk extends CoffeeDecorator{
 	public void make() {
 		// TODO Auto-generated method stub
 		coffee.make();
-		System.out.println("Adição de leite na medida de 1/4 do ml do café");
+		System.out.println("Adição de leite");
 	}
 
 	@Override

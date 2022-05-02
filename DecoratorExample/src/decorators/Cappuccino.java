@@ -12,7 +12,7 @@ public class Cappuccino  extends CoffeeDecorator{
 	@Override
 	public void make() {
 		// TODO Auto-generated method stub
-		System.out.println("1/3 do expresso, 1/3 de leite, 1/3 de espuma de leite com medida de 150 ml");
+		System.out.println("Cappuccino na área!");
 	}
 
 	@Override

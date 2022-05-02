@@ -1,7 +1,6 @@
 package drivethruproxyentrega;
 
 import java.util.Random;
-
 import model.Coffee;
 import model.Pedidos;
 import observerdelivery.ObserverPreparoPedido;
@@ -9,6 +8,7 @@ import observerdelivery.ObserverPreparoPedido;
 public class UserDelivery implements EntregaPedido, Pedidos, ObserverPreparoPedido{
 
 	private String cpf;
+	
 	private Integer codigo;
 	
 	
@@ -76,23 +76,28 @@ public UserDelivery (String cpf) {
 		
 				for (int i = 5; i > 0; i--) {
 			
-					Thread.sleep(4000);
-					System.out.print( ". ");
+					Thread.sleep(1500);
+					
+					System.out.print( " ^_^ ");
+					
 			
 					}
-							
+				System.out.println();			
 				coffee.make();
+				
 				showOrder( nome, coffee);
 		
 	}
 	
+	
+	
 	@Override
 	public void showOrder(String title, Coffee coffee) {
 		
-		System.out.println("Preço: " + coffee.getPrice());
+		System.out.println(" -------------> Preço do café: " + coffee.getPrice() +" <-------------");	
+		System.out.println("Verifica abaixo se tem taxa de entrega!");
+		System.out.println("c(__)c(__)c(__)c(__) Mais detalhes logo abaixo c(__)c(__)c(__)c(__)");
 		
-		System.out.println("\u2615 \u2615 \u2615 --- CoffeeShop  --- \u2615 \u2615 \u2615  \n");
-		System.out.println(" ");
 	}
 
 

@@ -9,13 +9,14 @@ public class NineNineFood implements ShippingPriceServiceStrategy {
 	public double priceDelivery() {
 		// TODO Auto-generated method stub
 		//taxa mínima de cobrança		
-		double basePrice = 5;
-		double priceGuyDelivery = basePrice * 0.35;
+		double basePrice = 3.5;
+		// honorários (fee) do entregador
+		double deliveryServiceFee = basePrice * 0.30;
 		//fórmula do preço final da entrega
-		double priceDelivery = basePrice + priceGuyDelivery;
+		double deliveryPrice = basePrice + deliveryServiceFee;
 		
 		
-		return priceDelivery;
+		return deliveryPrice;
 	}
 
 	

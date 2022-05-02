@@ -13,6 +13,13 @@ private List<ObserverPreparoPedido> observersClients = new ArrayList<>();
 		observersClients.add(observer);
 	}
 	
+	
+public void addAll(List <ObserverPreparoPedido> observer) {
+		
+		observersClients.addAll(observer);
+	}
+	
+	
 	 public void remove(ObserverPreparoPedido observer){
 		 observersClients.remove(observer);
 	    }
