@@ -108,6 +108,6 @@ public UserDelivery (String cpf) {
 			generateCode();
 		}
 	}
-	
+
 }
 

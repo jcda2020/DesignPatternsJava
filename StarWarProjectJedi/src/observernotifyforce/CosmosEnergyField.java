@@ -20,7 +20,13 @@ public abstract class CosmosEnergyField {
 	}
  
  public void notifyOfForce(JediOrder anyJedi) {
-	 anyJedi.jediPresence(anyJedi);
+	 System.out.println("Presença da força existe neste local");
+	 for (JediOrder jediOrder : sensitiveList) {
+		 
+		 anyJedi.jediPresence(anyJedi);
+	}
+	 
+	 
 	 
  }
 	

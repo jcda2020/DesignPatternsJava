@@ -2,38 +2,32 @@ package decoratorjedai;
 
 import factoryjedai.JediOrder;
 
-public class PadawanDecorator extends DecoratorAbstractJedi{
+public class SithDecorator extends DecoratorAbstractJedi{
 
-	
-	public PadawanDecorator(JediOrder jediOrder) {
+	public SithDecorator(JediOrder jediOrder) {
 		super(jediOrder);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void jediPresence(JediOrder anyJedi) {
-		// TODO Auto-generated method stub
-		System.out.println(anyJedi + "presente no local!");
-	}
-
-	@Override
 	public void selfControl() {
 		// TODO Auto-generated method stub
-		jediOrder.selfControl();
+		System.out.println("Raiva, ódio e vigança levam a desenvolver habilidades mais profundas da força!");
 	}
 
 	@Override
-	public void telecinese() {
+	public void jediPresence(JediOrder anyJedi) {
 		// TODO Auto-generated method stub
-		System.out.println("start do treinamento da telecinese");
+		
+	}
+
+	@Override
+	public void jediAttack() {
+		// TODO Auto-generated method stub
+		jediOrder.jediAttack();
+		
 	}
 	
-	
-	@Override
-	public void senseDangers() {
-		
-		System.out.println("Perigo eminente");
-	};
 	
 	@Override
 	public void speedOfForce(double speed) {
@@ -50,16 +44,6 @@ public class PadawanDecorator extends DecoratorAbstractJedi{
 	
 	
 	}
-
-	@Override
-	public void jediAttack() {
-		// TODO Auto-generated method stub
-		jediOrder.jediAttack();
-	};
-	
-	
-	
-	
 	
 
 }

@@ -1,6 +1,6 @@
 package factoryjedai;
 
-public abstract class FactoryAbstractJedi {
+public abstract class FactoryAbstractJedi implements JediOrder {
 
 	public void startJedi() {
 		

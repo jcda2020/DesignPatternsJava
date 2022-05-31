@@ -1,18 +1,19 @@
 package factoryjedai;
 
 import observernotifyforce.TheForceObserver;
+import strategyuseforce.ArtOfwar;
 
-public interface JediOrder extends TheForceObserver{
+public interface JediOrder extends TheForceObserver, ArtOfwar{
 
 	void selfControl();
-	void telecinese();
 	
+	default void telecinese() {};
 	default void VisionsOfForce() {};
 	default void ForceSensitives() {};
 	default void StormsOfForce() {};
 	default void AbsorbForceStorms() {};
 	default void senseDangers() {};
-	default void speedOfForce() {};
+	default void speedOfForce(double speed) {};
 	default void telepathy() {};
 	default void buildsLightSaber() {};
 	default void persuasion() {};
